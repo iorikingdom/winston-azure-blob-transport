@@ -40,6 +40,8 @@ The Azure transport accepts the following options:
 * __account.key:__ The access key used to authenticate into this storage account
 * __blobName:__ The name of the blob to log.
 * __containerName:__ The container which will contain the logs.
+* __maxBlobSize : The size in MB when a new blob file should be created.
+            Note that the file size may go over the max size. But a  new one will be created within one hour of exceeding the max.
 
 [0]: http://www.windowsazure.com/en-us/develop/nodejs/
 [1]: https://github.com/flatiron/winston

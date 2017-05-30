@@ -38,3 +38,11 @@ jspm_packages
 
 # Ignore build
 lib
+src/blobTransport.js
+src/blobTransport.js.map
+
+#webstorm file
+.idea/
+
+
+
