@@ -12,7 +12,7 @@ NOTE: This is a fork of https://github.com/Parsimotion/winston-azure-blob-transp
 
 ``` bash
   $ npm install winston
-  $ npm install winston-azure-blob-transport
+  $ npm install ehealth-winston-azure-blob-transport
 ```
 
 ## Usage
