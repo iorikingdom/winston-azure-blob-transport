@@ -4,7 +4,7 @@
 
 A [Windows Azure][0] blob storage transport for [winston][1].
 
-##Credit
+## Credit
 NOTE: This is a fork of https://github.com/Parsimotion/winston-azure-blob-transport, 99% of the code in this repository was written by user Parsimotion on github.
     This fork simply adds the ability to specify a max file size.
 
