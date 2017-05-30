@@ -4,6 +4,10 @@
 
 A [Windows Azure][0] blob storage transport for [winston][1].
 
+##Credit
+NOTE: This is a fork of https://github.com/Parsimotion/winston-azure-blob-transport, 99% of the code in this repository was written by user Parsimotion on github.
+    This fork simply adds the ability to specify a max file size.
+
 ## Installation
 
 ``` bash
@@ -33,6 +37,7 @@ A [Windows Azure][0] blob storage transport for [winston][1].
   logger.warn("Hello!");
 ```
 
+
 The Azure transport accepts the following options:
 
 * __level:__ Level of messages that this transport should log (defaults to `info`).
@@ -40,7 +45,7 @@ The Azure transport accepts the following options:
 * __account.key:__ The access key used to authenticate into this storage account
 * __blobName:__ The name of the blob to log.
 * __containerName:__ The container which will contain the logs.
-* __maxBlobSize : The size in MB when a new blob file should be created.
+* __maxBlobSize:__ The size in MB when a new blob file should be created.
             Note that the file size may go over the max size. But a  new one will be created within one hour of exceeding the max.
 
 [0]: http://www.windowsazure.com/en-us/develop/nodejs/
