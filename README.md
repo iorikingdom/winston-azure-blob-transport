@@ -1,6 +1,6 @@
 # winston-azure-blob-transport
 
-[![NPM version](https://badge.fury.io/js/winston-azure-blob-transport.png)](http://badge.fury.io/js/winston-azure-blob-transport)
+[![NPM version](https://badge.fury.io/js/ehealth-winston-azure-blob-transport.png)](http://badge.fury.io/js/ehealth-winston-azure-blob-transport)
 
 A [Windows Azure][0] blob storage transport for [winston][1].
 
