@@ -47,6 +47,6 @@ The Azure transport accepts the following options:
 * __containerName:__ The container which will contain the logs.
 * __maxBlobSize:__ The size in MB when a new blob file should be created.
             Note that the file size may go over the max size. But a  new one will be created within one hour of exceeding the max.
-
+* __maxBlockCount:__ How many commited blobs should be written before a new blob is created. Note that currently azure has a maximum of 50000 before errors are thrown. The default value in this module is 48000
 [0]: http://www.windowsazure.com/en-us/develop/nodejs/
 [1]: https://github.com/flatiron/winston

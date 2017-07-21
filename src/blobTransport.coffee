@@ -19,7 +19,7 @@ HOUR_IN_MILLISECONDS = 60000 * 60;
 
 class BlobTransport extends Transport
 
-  constructor: ({@account, @containerName, @blobName, @maxBlobSize , @level = "info"}) ->
+  constructor: ({@account, @containerName, @blobName, @maxBlobSize, @maxBlockCount = 48000 , @level = "info"}) ->
     @maxBlobSize = if @maxBlobSize then (@maxBlobSize * MB) else undefined
     @origBlobName = @blobName
     @blobName = if @maxBlobSize then (@blobName + '-' + @_timestamp()) else @origBlobName
@@ -28,6 +28,9 @@ class BlobTransport extends Transport
     @client = @_buildClient @account
     @createNewBlobIfMaxSize();
 
+  rollBlob: ()=>
+    instance = this;
+    instance.blobName = instance.origBlobName + '-' + instance._timestamp();
 
   createNewBlobIfMaxSize: () =>
     instance = this;
@@ -36,7 +39,7 @@ class BlobTransport extends Transport
         if (err?)
           # Not much we can do here; swallow the error. Usually the next check will pass.
         else if result && result.entries[0] && result.entries[0].contentLength >= instance.maxBlobSize
-          instance.blobName = instance.origBlobName + '-' + instance._timestamp()
+           rollBlob();
        )
     ,HOUR_IN_MILLISECONDS
 
@@ -51,6 +54,7 @@ class BlobTransport extends Transport
     return
 
   _buildCargo: =>
+    instance = this;
     async.cargo (tasks, __whenFinishCargo) =>
       __whenLogAllBlock = ->
         debug "Finish append all lines to blob"
@@ -68,6 +72,7 @@ class BlobTransport extends Transport
         debug "Saving log with size #{chunk.length}"
         @client.appendFromText @containerName, @blobName, chunk, (err, result) =>
           return @_retryIfNecessary(err, chunk, whenLoggedChunk) if err
+          instance.rollBlob() if result.committedBlockCount >= instance.maxBlockCount
           whenLoggedChunk()
       , (err) ->
         debug "Error in block" if err
