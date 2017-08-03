@@ -22,7 +22,7 @@ class BlobTransport extends Transport
   constructor: ({@account, @containerName, @blobName, @maxBlobSize, @maxBlockCount = 48000 , @level = "info"}) ->
     @maxBlobSize = if @maxBlobSize then (@maxBlobSize * MB) else undefined
     @origBlobName = @blobName
-    @blobName = if @maxBlobSize then (@blobName + '-' + @_timestamp()) else @origBlobName
+    @blobName = if @maxBlobSize then (@blobName + '-' + @_timestamp() + ".log") else @origBlobName
     @name = "BlobTransport"
     @cargo = @_buildCargo()
     @client = @_buildClient @account
