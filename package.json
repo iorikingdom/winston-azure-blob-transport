@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eHealthManny/winston-azure-blob-transport.git"
+    "url": "git+https://github.com/iorikingdom/winston-azure-blob-transport.git"
   },
   "dependencies": {
     "async": "2.0.1",
