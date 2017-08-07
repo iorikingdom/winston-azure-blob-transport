@@ -15,7 +15,7 @@ MAX_BLOCK_SIZE = azure.Constants.BlobConstants.MAX_BLOCK_SIZE
 
 MB = azure.Constants.MB;
 
-HOUR_IN_MILLISECONDS = 60000 * 60;
+HOUR_IN_MILLISECONDS = 60000 * 5;
 
 class BlobTransport extends Transport
 
@@ -30,7 +30,7 @@ class BlobTransport extends Transport
 
   rollBlob: ()=>
     instance = this;
-    instance.blobName = instance.origBlobName + '-' + instance._timestamp();
+    instance.blobName = instance.origBlobName + '-' + instance._timestamp() + ".log";
 
   createNewBlobIfMaxSize: () =>
     instance = this;
